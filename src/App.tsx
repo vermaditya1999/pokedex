@@ -1,4 +1,4 @@
-import PokemonCard from 'components/PokemonCard';
+import { PokemonCard } from 'components/PokemonCard';
 
 export default function App() {
 	return (
