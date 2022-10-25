@@ -1,21 +1,21 @@
+import { useState } from 'react';
 import usePokemonDataQuery from './usePokemonDataQuery';
 import { getGradientColorFromPokemonType, getRandomPokemonType } from './utils';
 
 export default function PokemonCard({ dataURL }: PokemonCardProps) {
 	const { isLoading, error, data } = usePokemonDataQuery(dataURL);
+	const [imageLoaded, setImageLoaded] = useState(false);
 
 	if (isLoading) {
 		return (
-			<div className='flex justify-center items-center w-64 h-96 rounded-xl border-2 border-stone-900 text-stone-900'>
-				<p>Loading ...</p>
-			</div>
+			<div className='flex justify-center items-center w-64 h-96 rounded-xl border-2 border-stone-900 text-stone-900 bg-stone-100'></div>
 		);
 	}
 
 	if (error || !data) {
 		return (
 			<div className='flex justify-center items-center w-64 h-96 rounded-xl border-2 border-stone-900 text-stone-900'>
-				<p>Something went wrong!.</p>
+				<p>Something went wrong!</p>
 			</div>
 		);
 	}
@@ -39,7 +39,13 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 						))}
 					</p>
 					<div className='flex justify-center'>
-						<img className='w-40' src={data.sprite} alt={`Sprite of ${data.name}`} />
+						{!imageLoaded && <div className='h-32 w-full p-4 bg-stone-200'></div>}
+						<img
+							className={`h-32 ${imageLoaded ? 'visible' : 'hidden'}`}
+							src={data.sprite}
+							alt={`Sprite of ${data.name}`}
+							onLoad={() => setImageLoaded(true)}
+						/>
 					</div>
 				</div>
 				<div className='flex flex-col flex-grow my-2'>
@@ -83,7 +89,7 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 			<div
 				className={`absolute inset-0 ${getGradientColorFromPokemonType(
 					randomPokemonType
-				)} rounded-xl opacity-25 transition duration-500 group-hover:opacity-5`}></div>
+				)} rounded-xl opacity-25`}></div>
 		</div>
 	);
 }
