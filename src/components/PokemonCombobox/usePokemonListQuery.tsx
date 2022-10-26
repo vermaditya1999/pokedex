@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-import { getRandomArrayElement } from 'utils';
-import { PokemonListServerData, PokemonList } from './types';
+import { getRandomArrayElement } from 'shared/utils/random';
+import { PokemonList } from './types';
 
 function usePokemonListQuery() {
 	const [pokemon, setPokemon] = useState('pikachu');
@@ -22,6 +22,15 @@ function usePokemonListQuery() {
 	});
 
 	return { status, data, pokemon, setPokemon };
+}
+
+interface PokemonServerData {
+	name: string;
+	url: string;
+}
+
+interface PokemonListServerData {
+	results: PokemonServerData[];
 }
 
 export { usePokemonListQuery };

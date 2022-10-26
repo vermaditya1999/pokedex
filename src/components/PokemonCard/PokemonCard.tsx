@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import usePokemonDataQuery from './usePokemonDataQuery';
+
+import usePokemonQuery from './usePokemonQuery';
 import { getGradientColorFromPokemonType } from './utils';
-import { getRandomArrayElement } from 'utils';
+import { getRandomArrayElement } from 'shared/utils/random';
 
 export default function PokemonCard({ dataURL }: PokemonCardProps) {
-	const { status, data } = usePokemonDataQuery(dataURL);
+	const { status, data } = usePokemonQuery(dataURL);
 	const [imageLoaded, setImageLoaded] = useState(false);
 
 	if (status === 'loading') {
@@ -25,9 +26,9 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 
 	return (
 		<div
-			className={`relative w-64 h-96 rounded-xl border-2 border-stone-900 ${getGradientColorFromPokemonType(
+			className={`relative w-64 h-96 rounded-xl border-2 ${getGradientColorFromPokemonType(
 				randomPokemonType
-			)} flex flex-col text-stone-900 transition duration-500`}>
+			)} border-stone-900 flex flex-col text-stone-900 transition duration-500`}>
 			<div className='flex-grow flex flex-col my-2 bg-white py-2 px-3 border-y-2 border-stone-900'>
 				<div className='flex flex-col mt-2'>
 					<p className='leading-none text-xl font-bold'>{data.name}</p>
@@ -90,7 +91,7 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 			<div
 				className={`absolute inset-0 ${getGradientColorFromPokemonType(
 					randomPokemonType
-				)} rounded-xl opacity-25`}></div>
+				)} rounded-xl opacity-20`}></div>
 		</div>
 	);
 }

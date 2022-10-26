@@ -1,14 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-import type { PokemonData, PokemonServerData, PokemonServerStat, PokemonStats } from './types';
+import type { Pokemon, PokemonStats } from './types';
 import { PokemonType } from './types';
 
-export default function usePokemonDataQuery(dataURL: string) {
+export default function usePokemonQuery(dataURL: string) {
 	const { status, data } = useQuery([dataURL], () =>
 		axios.get<PokemonServerData>(dataURL).then((res) => {
 			const data = res.data;
-			const pokemonData: PokemonData = {
+			const pokemon: Pokemon = {
 				name: data.name,
 				height: data.height,
 				weight: data.weight,
@@ -17,7 +17,7 @@ export default function usePokemonDataQuery(dataURL: string) {
 				stats: mapStats(data.stats),
 				sprite: data.sprites.other['official-artwork'].front_default,
 			};
-			return pokemonData;
+			return pokemon;
 		})
 	);
 
@@ -55,4 +55,38 @@ function mapStats(serverStats: PokemonServerStat[]): PokemonStats {
 		}
 	}
 	return stats;
+}
+
+interface PokemonServerData {
+	name: string;
+	height: number;
+	weight: number;
+	types: PokemonServerType[];
+	abilities: {
+		ability: {
+			name: string;
+			url: string;
+		};
+	}[];
+	stats: PokemonServerStat[];
+	sprites: {
+		other: {
+			'official-artwork': {
+				front_default: string;
+			};
+		};
+	};
+}
+
+interface PokemonServerStat {
+	base_stat: number;
+	stat: {
+		name: string;
+	};
+}
+
+interface PokemonServerType {
+	type: {
+		name: string;
+	};
 }
