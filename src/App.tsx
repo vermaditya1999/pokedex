@@ -1,14 +1,11 @@
-import { useState } from 'react';
-
 import { PokemonCombobox } from 'components/PokemonCombobox';
 import { usePokemonListQuery } from 'components/PokemonCombobox/usePokemonListQuery';
 import { PokemonCard } from 'components/PokemonCard';
 
 export default function App() {
-	const { isLoading, error, data } = usePokemonListQuery();
-	const [selectedPokemon, setSelectedPokemon] = useState('pikachu');
+	const { status, data, pokemon, setPokemon } = usePokemonListQuery();
 
-	if (isLoading) {
+	if (status === 'loading') {
 		return (
 			<div>
 				<p>Loading ...</p>
@@ -16,7 +13,7 @@ export default function App() {
 		);
 	}
 
-	if (error || !data) {
+	if (status === 'error' || !data) {
 		return (
 			<div>
 				<p>Something went wrong!</p>
@@ -30,14 +27,10 @@ export default function App() {
 				<div className='relative flex-grow flex flex-col items-center'>
 					<img className='h-24' src='pokedex.png' alt='Pokedex' />
 					<div className='absolute left-1/2 -translate-x-1/2 bottom-12'>
-						<PokemonCard dataURL={data[selectedPokemon]} />
+						<PokemonCard dataURL={data[pokemon]} />
 					</div>
 					<div className='absolute mt-32'>
-						<PokemonCombobox
-							selectedPokemon={selectedPokemon}
-							setSelectedPokemon={setSelectedPokemon}
-							pokemonData={data}
-						/>
+						<PokemonCombobox pokemon={pokemon} setPokemon={setPokemon} pokemonList={data} />
 					</div>
 					<div className='flex justify-center pt-52 mt-96 text-sm text-stone-400'>
 						<p>

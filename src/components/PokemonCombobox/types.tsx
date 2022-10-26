@@ -1,4 +1,4 @@
-interface PokemonData {
+interface PokemonList {
 	[name: string]: string;
 }
 
@@ -11,4 +11,4 @@ interface PokemonListServerData {
 	results: PokemonServerData[];
 }
 
-export type { PokemonData, PokemonListServerData };
+export type { PokemonList, PokemonListServerData };

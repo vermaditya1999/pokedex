@@ -5,7 +5,7 @@ import type { PokemonData, PokemonServerData, PokemonServerStat, PokemonStats } 
 import { PokemonType } from './types';
 
 export default function usePokemonDataQuery(dataURL: string) {
-	const { isLoading, error, data } = useQuery([dataURL], () =>
+	const { status, data } = useQuery([dataURL], () =>
 		axios.get<PokemonServerData>(dataURL).then((res) => {
 			const data = res.data;
 			const pokemonData: PokemonData = {
@@ -21,7 +21,7 @@ export default function usePokemonDataQuery(dataURL: string) {
 		})
 	);
 
-	return { isLoading, error, data };
+	return { status, data };
 }
 
 function mapStats(serverStats: PokemonServerStat[]): PokemonStats {

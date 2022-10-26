@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import usePokemonDataQuery from './usePokemonDataQuery';
-import { getGradientColorFromPokemonType, getRandomArrayElement } from './utils';
+import { getGradientColorFromPokemonType } from './utils';
+import { getRandomArrayElement } from 'utils';
 
 export default function PokemonCard({ dataURL }: PokemonCardProps) {
-	const { isLoading, error, data } = usePokemonDataQuery(dataURL);
+	const { status, data } = usePokemonDataQuery(dataURL);
 	const [imageLoaded, setImageLoaded] = useState(false);
 
-	if (isLoading) {
+	if (status === 'loading') {
 		return (
 			<div className='flex justify-center items-center w-64 h-96 rounded-xl border-2 border-stone-900 text-stone-900 bg-stone-100'></div>
 		);
 	}
 
-	if (error || !data) {
+	if (status === 'error' || !data) {
 		return (
 			<div className='flex justify-center items-center w-64 h-96 rounded-xl border-2 border-stone-900 text-stone-900'>
 				<p>Something went wrong!</p>

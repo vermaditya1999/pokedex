@@ -1,25 +1,25 @@
 import { useState } from 'react';
 import { Combobox } from '@headlessui/react';
 
-import { PokemonData } from './types';
+import { PokemonList } from './types';
 
 export default function PokemonCombobox({
-	selectedPokemon,
-	setSelectedPokemon,
-	pokemonData,
+	pokemon,
+	setPokemon,
+	pokemonList,
 }: PokemonComboboxProps) {
 	const [query, setQuery] = useState('');
 
 	const filteredPokemons =
 		query === ''
 			? []
-			: Object.keys(pokemonData).filter((pokemon) =>
+			: Object.keys(pokemonList).filter((pokemon) =>
 					pokemon.toLowerCase().startsWith(query.toLowerCase())
 			  );
 
 	return (
 		<div className='text-lg'>
-			<Combobox value={selectedPokemon} onChange={setSelectedPokemon}>
+			<Combobox value={pokemon} onChange={setPokemon}>
 				<Combobox.Input
 					autoComplete='off'
 					onChange={(event) => setQuery(event.target.value)}
@@ -41,7 +41,7 @@ export default function PokemonCombobox({
 }
 
 interface PokemonComboboxProps {
-	selectedPokemon: string;
-	setSelectedPokemon: React.Dispatch<React.SetStateAction<string>>;
-	pokemonData: PokemonData;
+	pokemon: string;
+	setPokemon: React.Dispatch<React.SetStateAction<string>>;
+	pokemonList: PokemonList;
 }
