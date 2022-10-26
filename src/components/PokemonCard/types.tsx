@@ -33,9 +33,9 @@ type PokemonType =
 interface PokemonStats {
 	hp: number;
 	attack: number;
-	defence: number;
+	defense: number;
 	specialAttack: number;
-	specialDefence: number;
+	specialDefense: number;
 	speed: number;
 }
 

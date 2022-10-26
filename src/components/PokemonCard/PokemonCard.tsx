@@ -64,9 +64,9 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 						</div>
 						<div className='flex flex-col items-center'>
 							<span className='flex justify-center items-center font-semibold text-xl '>
-								{data.stats.defence}
+								{data.stats.defense}
 							</span>
-							<span className='text-xs text-stone-400'>Defence</span>
+							<span className='text-xs text-stone-400'>Defense</span>
 						</div>
 						<div className='flex flex-col items-center'>
 							<span className='flex justify-center items-center font-semibold text-xl '>

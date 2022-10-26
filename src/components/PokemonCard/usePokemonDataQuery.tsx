@@ -29,9 +29,9 @@ function mapStats(serverStats: PokemonServerStat[]): PokemonStats {
 		hp: 0,
 		speed: 0,
 		attack: 0,
-		defence: 0,
+		defense: 0,
 		specialAttack: 0,
-		specialDefence: 0,
+		specialDefense: 0,
 	};
 
 	for (const obj of serverStats) {
@@ -44,14 +44,14 @@ function mapStats(serverStats: PokemonServerStat[]): PokemonStats {
 		if (obj.stat.name === 'attack') {
 			stats.attack = obj.base_stat;
 		}
-		if (obj.stat.name === 'defence') {
-			stats.defence = obj.base_stat;
+		if (obj.stat.name === 'defense') {
+			stats.defense = obj.base_stat;
 		}
 		if (obj.stat.name === 'specialAttack') {
 			stats.specialAttack = obj.base_stat;
 		}
-		if (obj.stat.name === 'specialDefence') {
-			stats.specialDefence = obj.base_stat;
+		if (obj.stat.name === 'specialDefense') {
+			stats.specialDefense = obj.base_stat;
 		}
 	}
 	return stats;
