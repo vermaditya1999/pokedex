@@ -25,8 +25,8 @@ export default function App() {
 	}
 
 	return (
-		<div className='p-2 flex justify-center'>
-			<div className='py-4 px-12 border-4 border-stone-900 flex flex-col pt-16 rounded-xl'>
+		<div className='p-4 flex justify-center'>
+			<div className='mt-4 py-2 px-12 border-4 border-stone-900 flex flex-col pt-16 rounded-xl bg-gradient-to-b from-stone-50 to-stone-200'>
 				<div className='relative flex-grow flex flex-col items-center'>
 					<img className='h-24' src='pokedex.png' alt='Pokedex' />
 					<div className='absolute left-1/2 -translate-x-1/2 bottom-12'>
@@ -39,7 +39,7 @@ export default function App() {
 							pokemonData={data}
 						/>
 					</div>
-					<div className='flex justify-center pt-52 mt-96 text-sm text-stone-400 -mb-2'>
+					<div className='flex justify-center pt-52 mt-96 text-sm text-stone-400'>
 						<p>
 							created by{' '}
 							<a
