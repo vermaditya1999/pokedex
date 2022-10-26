@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import usePokemonDataQuery from './usePokemonDataQuery';
-import { getGradientColorFromPokemonType, getRandomPokemonType } from './utils';
+import { getGradientColorFromPokemonType, getRandomArrayElement } from './utils';
 
 export default function PokemonCard({ dataURL }: PokemonCardProps) {
 	const { isLoading, error, data } = usePokemonDataQuery(dataURL);
@@ -20,15 +20,15 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 		);
 	}
 
-	const randomPokemonType = getRandomPokemonType(data.types);
+	const randomPokemonType = getRandomArrayElement(data.types);
 
 	return (
 		<div
-			className={`relative group hover:scale-110 w-64 h-96 rounded-xl border-2 border-stone-900 ${getGradientColorFromPokemonType(
+			className={`relative w-64 h-96 rounded-xl border-2 border-stone-900 ${getGradientColorFromPokemonType(
 				randomPokemonType
 			)} flex flex-col text-stone-900 transition duration-500`}>
 			<div className='flex-grow flex flex-col my-2 bg-white py-2 px-3 border-y-2 border-stone-900'>
-				<div className='flex flex-col'>
+				<div className='flex flex-col mt-2'>
 					<p className='leading-none text-xl font-bold'>{data.name}</p>
 					<p className='text-xs text-stone-400'>
 						{data.types.map((type, index) => (
@@ -39,9 +39,9 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 						))}
 					</p>
 					<div className='flex justify-center'>
-						{!imageLoaded && <div className='h-32 w-full p-4 bg-stone-200'></div>}
+						{!imageLoaded && <div className='h-40 w-full p-4 bg-stone-200'></div>}
 						<img
-							className={`h-32 ${imageLoaded ? 'visible' : 'hidden'}`}
+							className={`h-40 ${imageLoaded ? 'visible' : 'hidden'}`}
 							src={data.sprite}
 							alt={`Sprite of ${data.name}`}
 							onLoad={() => setImageLoaded(true)}
