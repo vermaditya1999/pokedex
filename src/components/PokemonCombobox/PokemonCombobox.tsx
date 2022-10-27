@@ -23,15 +23,15 @@ export default function PokemonCombobox({
 				<Combobox.Input
 					autoComplete='off'
 					onChange={(event) => setQuery(event.target.value)}
-					className='w-80 border-4 border-stone-900 rounded-t-lg px-4 py-1 outline-none'
+					className='w-80 border-4 border-stone-900 rounded-t-lg px-4 py-1 outline-none font-medium bg-emerald-100'
 					placeholder='search pokemon'
 				/>
-				<Combobox.Options className='w-80 max-h-56 border-4 border-t-0 border-stone-900 bg-white overflow-y-scroll'>
+				<Combobox.Options className='w-80 max-h-56 border-4 border-t-0 border-stone-900 font-medium bg-emerald-100 overflow-y-scroll'>
 					{filteredPokemons.map((pokemon) => (
 						<Combobox.Option
 							key={pokemon}
 							value={pokemon}
-							className={({ active }) => `px-4 py-2 ${active && 'bg-stone-900 text-stone-50'}`}>
+							className={({ active }) => `px-4 py-2 ${active && 'bg-stone-900 text-emerald-50'}`}>
 							{pokemon}
 						</Combobox.Option>
 					))}

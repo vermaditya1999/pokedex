@@ -45,7 +45,7 @@ export default function Pokedex() {
 					</div>
 				</div>
 				<p className='my-1 text-xs text-center text-red-900'>
-					<a href='https://github.com/vermaditya1999' target='_blank'>
+					<a href='https://github.com/vermaditya1999' target='_blank' rel='noreferrer'>
 						@vermaditya1999
 					</a>
 				</p>
