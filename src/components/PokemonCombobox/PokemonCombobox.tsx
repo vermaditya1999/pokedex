@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Combobox } from '@headlessui/react';
 
-import { PokemonList } from './types';
+import type { PokemonList } from 'components/Pokedex';
 
 export default function PokemonCombobox({
 	pokemon,

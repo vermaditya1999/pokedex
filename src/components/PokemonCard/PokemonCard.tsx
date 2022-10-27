@@ -26,10 +26,10 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 
 	return (
 		<div
-			className={`relative w-64 h-96 rounded-xl border-2 ${getGradientColorFromPokemonType(
+			className={`relative w-64 h-96 rounded-xl border-4 ${getGradientColorFromPokemonType(
 				randomPokemonType
 			)} border-stone-900 flex flex-col text-stone-900 transition duration-500`}>
-			<div className='flex-grow flex flex-col my-2 bg-white py-2 px-3 border-y-2 border-stone-900'>
+			<div className='flex-grow flex flex-col my-2 bg-white py-2 px-3 border-y-4 border-stone-900'>
 				<div className='flex flex-col mt-2'>
 					<p className='leading-none text-xl font-bold'>{data.name}</p>
 					<p className='text-xs text-stone-400'>
