@@ -23,7 +23,7 @@ export default function PokemonCombobox({
 				<Combobox.Input
 					autoComplete='off'
 					onChange={(event) => setQuery(event.target.value)}
-					className='w-80 border-4 border-stone-900 rounded-t-xl px-4 py-1 outline-none'
+					className='w-80 border-4 border-stone-900 rounded-t-lg px-4 py-1 outline-none'
 					placeholder='search pokemon'
 				/>
 				<Combobox.Options className='w-80 max-h-56 border-4 border-t-0 border-stone-900 bg-white overflow-y-scroll'>
