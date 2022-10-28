@@ -30,8 +30,8 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 				randomPokemonType
 			)} border-stone-900 flex flex-col text-stone-900 transition duration-500`}>
 			<div className='flex-grow flex flex-col my-2 bg-white py-2 px-3 border-y-4 border-stone-900'>
-				<div className='flex flex-col mt-2'>
-					<p className='leading-none text-xl font-bold'>{data.name}</p>
+				<div className='flex flex-col mt-1'>
+					<p className='text-xl font-bold'>{data.name}</p>
 					<p className='text-xs text-stone-400'>
 						{data.types.map((type, index) => (
 							<span key={type}>
@@ -41,9 +41,9 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 						))}
 					</p>
 					<div className='flex justify-center'>
-						{!imageLoaded && <div className='h-40 w-full p-4 bg-stone-200'></div>}
+						{!imageLoaded && <div className='h-32 mt-2 w-full bg-stone-200'></div>}
 						<img
-							className={`h-40 ${imageLoaded ? 'visible' : 'hidden'}`}
+							className={`h-32 mt-2 ${imageLoaded ? 'visible' : 'hidden'}`}
 							src={data.sprite}
 							alt={`Sprite of ${data.name}`}
 							onLoad={() => setImageLoaded(true)}
@@ -51,7 +51,7 @@ export default function PokemonCard({ dataURL }: PokemonCardProps) {
 					</div>
 				</div>
 				<div className='flex flex-col flex-grow my-2'>
-					<div className='flex justify-around border-x-2 border-stone-600'>
+					<div className='flex justify-between border-stone-600'>
 						<div className='flex flex-col items-center'>
 							<span className='flex justify-center items-center font-semibold text-xl'>
 								{data.stats.hp}

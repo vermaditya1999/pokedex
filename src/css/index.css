@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Retro Gaming';
+	src: local('Retro Gaming'), url('fonts/RetroGaming/RetroGaming.ttf') format('truetype');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

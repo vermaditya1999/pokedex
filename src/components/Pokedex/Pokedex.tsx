@@ -44,7 +44,7 @@ export default function Pokedex() {
 						<PokemonCard dataURL={data[pokemon]} />
 					</div>
 				</div>
-				<p className='my-1 text-xs text-center text-red-900'>
+				<p className='my-1 text-xs text-center text-red-400'>
 					<a href='https://github.com/vermaditya1999' target='_blank' rel='noreferrer'>
 						@vermaditya1999
 					</a>
